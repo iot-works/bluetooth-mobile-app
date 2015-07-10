@@ -3,6 +3,11 @@ angular.module('starter.controllers', ['ngCordova'])
   .controller('DashCtrl', function($scope) {})
 
   .controller('BlueToothCtrl', function($scope, $cordovaBluetoothSerial) {
+    $scope.status = "未连接";
+    $cordovaBluetoothSerial.isConnected().then(function(result){
+      console.log(result);
+    });
+
     $cordovaBluetoothSerial.list().then(function (result) {
       $scope.devices = result;
       console.log(JSON.stringify(result));
@@ -17,6 +22,13 @@ angular.module('starter.controllers', ['ngCordova'])
         $scope.$broadcast('scroll.refreshComplete');
       });
     };
+
+    $scope.connect = function(address) {
+      console.log(address);
+      $cordovaBluetoothSerial.connect(address).then(function(result){
+        $scope.status = "已连接"
+      });
+    }
   })
 
   .controller('BLECtrl', function($scope, BLE) {

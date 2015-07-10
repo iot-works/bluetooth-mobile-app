@@ -3,9 +3,12 @@
         <ion-refresher pulling-text="Pull to refresh..." on-refresh="onRefresh()">
         </ion-refresher>
         <ion-list>
-            <ion-item class="item-icon-right" ng-repeat="device in devices" type="item-text-wrap">
+            <ion-item class="item-icon-right" ng-repeat="device in devices" type="item-text-wrap" ng-click="connect(device.address)">
                 <h2>{{device.name}}</h2>
-                <p>{{device.id}}</p>
+                <p>
+                    {{device.id}}<br/>
+                    {{status}}
+                </p>
             </ion-item>
         </ion-list>
     </ion-content>
