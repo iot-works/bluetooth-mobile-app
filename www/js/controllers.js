@@ -1,28 +1,60 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+  .controller('DashCtrl', function($scope) {})
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-  
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  }
-})
+  .controller('ChatsCtrl', function($scope, Chats) {
+    $scope.chats = Chats.all();
+    $scope.remove = function(chat) {
+      Chats.remove(chat);
+    };
+  })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
+  .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+    $scope.chat = Chats.get($stateParams.chatId);
+  })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-});
+  .controller('BLECtrl', function($scope, BLE) {
+
+    // keep a reference since devices will be added
+    $scope.devices = BLE.devices;
+
+    var success = function () {
+      if ($scope.devices.length < 1) {
+        // a better solution would be to update a status message rather than an alert
+        alert("Didn't find any Bluetooth Low Energy devices.");
+      }
+    };
+
+    var failure = function (error) {
+      alert(error);
+    };
+
+    // pull to refresh
+    $scope.onRefresh = function() {
+      BLE.scan().then(
+        success, failure
+      ).finally(
+        function() {
+          $scope.$broadcast('scroll.refreshComplete');
+        }
+      )
+    }
+
+    // initial scan
+    BLE.scan().then(success, failure);
+
+  })
+
+  .controller('BLEDetailCtrl', function($scope, $stateParams, BLE) {
+    BLE.connect($stateParams.deviceId).then(
+      function(peripheral) {
+        $scope.device = peripheral;
+      }
+    );
+  })
+
+  .controller('AccountCtrl', function($scope) {
+    $scope.settings = {
+      enableFriends: true
+    };
+  });
