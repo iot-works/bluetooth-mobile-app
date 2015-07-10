@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-  .run(function($ionicPlatform) {
+  .run(function($ionicPlatform, $cordovaBluetoothSerial) {
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -19,8 +19,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         StatusBar.styleDefault();
       }
 
-      // just checking if the BLE plugin works
-      ble.isEnabled(
+      $cordovaBluetoothSerial.isEnabled(
         function() {
           console.log("Bluetooth is enabled");
         },
@@ -29,8 +28,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           alert("Bluetooth is *not* enabled");
         }
       );
-
     });
+  })
+
+  .config(function($ionicConfigProvider){
+    $ionicConfigProvider.tabs.position('bottom');
   })
 
   .config(function($stateProvider, $urlRouterProvider) {
@@ -60,6 +62,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       })
 
+      .state('tab.bluetooth', {
+        url: '/bluetooth',
+        views: {
+          'tab-ble': {
+            templateUrl: 'templates/tab-bluetooth.html',
+            controller: 'BlueToothCtrl'
+          }
+        }
+      })
+
       .state('tab.ble', {
         url: '/ble',
         views: {
@@ -69,6 +81,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           }
         }
       })
+
       .state('tab.ble-detail', {
         url: '/ble/:deviceId',
         views: {
