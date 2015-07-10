@@ -3,7 +3,6 @@ angular.module('starter.controllers', ['ngCordova'])
   .controller('DashCtrl', function($scope) {})
 
   .controller('BlueToothCtrl', function($scope, $cordovaBluetoothSerial) {
-    console.log("enter bluetooth");
     $cordovaBluetoothSerial.list().then(function (result) {
       $scope.devices = result;
       console.log(JSON.stringify(result));
@@ -12,8 +11,8 @@ angular.module('starter.controllers', ['ngCordova'])
     });
 
     $scope.onRefresh = function() {
-      console.log("refresh");
       $cordovaBluetoothSerial.list().then(function (result) {
+        console.log(JSON.stringify(result));
         $scope.devices = result;
         $scope.$broadcast('scroll.refreshComplete');
       });
