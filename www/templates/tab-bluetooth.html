@@ -2,8 +2,19 @@
     <ion-content>
         <ion-refresher pulling-text="Pull to refresh..." on-refresh="onRefresh()">
         </ion-refresher>
+        <h2>List</h2>
         <ion-list>
-            <ion-item class="item-icon-right" ng-repeat="device in devices" type="item-text-wrap" ng-click="connect(device.address)">
+            <ion-item class="item-icon-right" ng-repeat="device in listDevices" type="item-text-wrap" ng-click="connect(device.address)">
+                <h2>{{device.name}}</h2>
+                <p>
+                    {{device.id}}<br/>
+                    {{status}}
+                </p>
+            </ion-item>
+        </ion-list>
+        <h2>Discover</h2>
+        <ion-list>
+            <ion-item class="item-icon-right" ng-repeat="device in discoverDevices" type="item-text-wrap" ng-click="connect(device.address)">
                 <h2>{{device.name}}</h2>
                 <p>
                     {{device.id}}<br/>
