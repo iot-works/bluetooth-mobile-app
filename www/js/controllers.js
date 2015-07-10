@@ -7,38 +7,46 @@ angular.module('starter.controllers', ['ngCordova'])
 		$scope.discoverDevices = {};
 		$scope.listDevices = {};
 		$scope.status = "未连接";
-		$cordovaBluetoothSerial.isConnected().then(function(result){
-		  console.log(result);
-		});
+		//$cordovaBluetoothSerial.isConnected().then(function(result){
+		//  console.log(result);
+		//});
 
 		$cordovaBluetoothSerial.list().then(function (result) {
 			$scope.devices = result;
-			console.log(JSON.stringify(result));
 		}, function (err) {
 			alert(err);
 		});
 
 		$scope.onRefresh = function () {
-			$cordovaBluetoothSerial.list().then(function (result) {
-				$scope.listDevices = result;
-				console.log("discover", JSON.stringify(result));
-				$cordovaBluetoothSerial.discoverUnpaired().then(function (result) {
-					console.log("discover", JSON.stringify(result));
-					$scope.discoverDevices = result;
-					$scope.$broadcast('scroll.refreshComplete');
+			$cordovaBluetoothSerial.clear().then(function (result) {
+				$cordovaBluetoothSerial.list().then(function (result) {
+					$scope.listDevices = result;
+					console.log("已配对", JSON.stringify(result));
+					$cordovaBluetoothSerial.discoverUnpaired().then(function (result) {
+						console.log("未配对", JSON.stringify(result));
+						$scope.discoverDevices = result;
+						$scope.$broadcast('scroll.refreshComplete');
+					}, function (err) {
+						alert(err);
+					});
 				});
 			});
 		};
 
 		$scope.connect = function (address) {
-			console.log(address);
 			$cordovaBluetoothSerial.connect(address).then(function (result) {
+				ionic.trigger('bluetooth.connected');
 				$scope.status = "已连接";
-				$cordovaBluetoothSerial.write('hello').then(function (result) {
+				$cordovaBluetoothSerial.write('hello world').then(function (result) {
 					console.log(result);
 				});
 			});
-		}
+		};
+		ionic.on('bluetooth.connected', function () {
+			$cordovaBluetoothSerial.read().then(function (result) {
+				console.log(result);
+			});
+		})
 	})
 
 	.controller('BLECtrl', function ($scope, BLE) {
