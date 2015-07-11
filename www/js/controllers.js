@@ -3,7 +3,12 @@ angular.module('starter.controllers', ['ngCordova'])
 	.controller('DashCtrl', function ($scope) {
 	})
 
-	.controller('BlueToothCtrl', function ($scope, $ionicPlatform, $cordovaBluetoothSerial) {
+	.controller('ColorCtrl', function ($scope, $cordovaBluetoothSerial) {
+		var $picker = document.getElementById("colorPicker"),
+			picker  = tinycolorpicker($picker);
+	})
+
+	.controller('BlueToothCtrl', function ($scope, $ionicPlatform, $cordovaBluetoothSerial, $urlRouterProvider) {
 		$scope.discoverDevices = {};
 		$scope.listDevices = {};
 		$scope.status = "未连接";
@@ -36,10 +41,8 @@ angular.module('starter.controllers', ['ngCordova'])
 		$scope.connect = function (address) {
 			console.log("click connect" + address);
 			$cordovaBluetoothSerial.connect(address).then(function (result) {
-				$cordovaBluetoothSerial.write('hello world').then(function (result) {
-					$scope.status = "已连接";
-					console.log('write' + result);
-				});
+				$urlRouterProvider.otherwise('/tab/color');
+
 			});
 			$cordovaBluetoothSerial.subscribeRawData().then(function(result){
 				console.log("raw data" + result);

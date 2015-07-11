@@ -64,6 +64,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       })
 
+      .state('tab.color', {
+        url: '/color',
+        views: {
+          'tab-ble': {
+            templateUrl: 'templates/tab-color.html',
+            controller: 'ColorCtrl'
+          }
+        }
+      })
+
       .state('tab.ble-detail', {
         url: '/ble/:deviceId',
         views: {
