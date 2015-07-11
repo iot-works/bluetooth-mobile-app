@@ -9,8 +9,8 @@
         <div class="list card">
             <div class="item item-divider">Services</div>
             <ion-list>
-                <ion-item ng-repeat="service in services">
-                    {{service}}
+                <ion-item ng-repeat="characteristic in characteristics" ng-click="read(characteristic)">
+                    {{characteristic.service}} {{characteristic.properties}}
                 </ion-item>
             </ion-list>
         </div>
