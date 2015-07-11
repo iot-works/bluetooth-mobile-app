@@ -4,11 +4,23 @@ angular.module('starter.controllers', ['ngCordova'])
 	})
 
 	.controller('ColorCtrl', function ($scope, $cordovaBluetoothSerial) {
-		var $picker = document.getElementById("colorPicker"),
-			picker  = tinycolorpicker($picker);
+		var $box = $('#colorPicker');
+		$box.tinycolorpicker();
+		var box = $box.data("plugin_tinycolorpicker");
+
+		box.setColor("#ff0000");
+
+		$box.bind("change", function()
+		{
+			var rgb = box.colorRGB;
+			console.log(rgb);
+			$cordovaBluetoothSerial.write(rgb).then(function (result) {
+				console.log('write' + rgb + result);
+			});
+		});
 	})
 
-	.controller('BlueToothCtrl', function ($scope, $ionicPlatform, $cordovaBluetoothSerial, $urlRouterProvider) {
+	.controller('BlueToothCtrl', function ($scope, $ionicPlatform, $cordovaBluetoothSerial, $state) {
 		$scope.discoverDevices = {};
 		$scope.listDevices = {};
 		$scope.status = "未连接";
@@ -41,8 +53,7 @@ angular.module('starter.controllers', ['ngCordova'])
 		$scope.connect = function (address) {
 			console.log("click connect" + address);
 			$cordovaBluetoothSerial.connect(address).then(function (result) {
-				$urlRouterProvider.otherwise('/tab/color');
-
+				$state.go('tab.color');
 			});
 			$cordovaBluetoothSerial.subscribeRawData().then(function(result){
 				console.log("raw data" + result);
