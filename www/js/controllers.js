@@ -3,21 +3,18 @@ angular.module('starter.controllers', ['ngCordova'])
 	.controller('DashCtrl', function ($scope) {
 	})
 
-	.controller('BlueToothCtrl', function ($scope, $cordovaBluetoothSerial) {
+	.controller('BlueToothCtrl', function ($scope, $ionicPlatform, $cordovaBluetoothSerial) {
 		$scope.discoverDevices = {};
 		$scope.listDevices = {};
 		$scope.status = "未连接";
-		$cordovaBluetoothSerial.isConnected().then(function(result){
-		  console.log(result);
-		});
-
-		$cordovaBluetoothSerial.list().then(function (result) {
-			$scope.devices = result;
-			$cordovaBluetoothSerial.readRSSI().then(function (result) {
-				console.log(result);
+		$ionicPlatform.ready(function () {
+			$cordovaBluetoothSerial.isConnected().then(function (result) {
+				$scope.status = "已连接";
 			});
-		}, function (err) {
-			alert(err);
+
+			$cordovaBluetoothSerial.list().then(function (result) {
+				$scope.devices = result;
+			});
 		});
 
 		$scope.onRefresh = function () {
@@ -39,20 +36,15 @@ angular.module('starter.controllers', ['ngCordova'])
 		$scope.connect = function (address) {
 			console.log("click connect" + address);
 			$cordovaBluetoothSerial.connect(address).then(function (result) {
-				ionic.trigger('bluetooth.connected');
-				$cordovaBluetoothSerial.readRSSI().then(function (result) {
-					console.log(result);
-				});
 				$cordovaBluetoothSerial.write('hello world').then(function (result) {
-					console.log(result);
+					$scope.status = "已连接";
+					console.log('write' + result);
 				});
 			});
+			$cordovaBluetoothSerial.subscribeRawData().then(function(result){
+				console.log("raw data" + result);
+			})
 		};
-		ionic.on('bluetooth.connected', function () {
-			$cordovaBluetoothSerial.readRSSI().then(function (result) {
-				console.log(result);
-			});
-		})
 	})
 
 	.controller('BLECtrl', function ($scope, BLE) {
