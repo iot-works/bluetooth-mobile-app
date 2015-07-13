@@ -88,6 +88,11 @@ angular.module('starter.controllers', ['ngCordova'])
 	})
 
 	.controller('BLEDetailCtrl', function ($scope, $stateParams, BLE,  $cordovaToast) {
+		var arrayBufferToInt = function (ab) {
+			var a = new Uint8Array(ab);
+			return a[0];
+		};
+
 		BLE.connect($stateParams.deviceId).then(
 			function (peripheral) {
 				$cordovaToast
@@ -105,16 +110,11 @@ angular.module('starter.controllers', ['ngCordova'])
 		$scope.read = function(characteristsic) {
 			console.log(JSON.stringify(characteristsic));
 				ble.read($stateParams.deviceId, characteristsic.service, characteristsic.characteristic, function(data){
-					var arrayBufferToInt = function (ab) {
-						var a = new Uint8Array(ab);
-						return a[0];
-					};
-
-					alert("data" + JSON.stringify(arrayBufferToInt(data)));
-					console.log(JSON.stringify(data));
+					alert(JSON.stringify(arrayBufferToInt(data)));
+					console.log(JSON.stringify(arrayBufferToInt(data)));
 				}, function(err){
-					alert("err" + JSON.stringify(arrayBufferToInt(err)));
-					console.log(JSON.stringify(err));
+					alert(JSON.stringify(arrayBufferToInt(err)));
+					console.log(JSON.stringify(arrayBufferToInt(err)));
 			});
 		}
 	});

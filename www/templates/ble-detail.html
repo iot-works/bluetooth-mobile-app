@@ -7,18 +7,10 @@
             </div>
         </div>
         <div class="list card">
-            <div class="item item-divider">Services</div>
-            <ion-list>
-                <ion-item ng-repeat="service in device.services">
-                    {{service}}
-                </ion-item>
-            </ion-list>
-        </div>
-        <div class="list card">
             <div class="item item-divider">All</div>
             <ion-list>
                 <ion-item ng-repeat="characteristic in characteristics" ng-click="read(characteristic)" ng-if="characteristic.descriptors[0] !== undefined">
-                    {{characteristic.service}} {{characteristic.properties}}
+                    {{characteristic.characteristic}} {{characteristic.properties}}
                 </ion-item>
             </ion-list>
         </div>
