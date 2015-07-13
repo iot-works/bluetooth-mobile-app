@@ -105,10 +105,15 @@ angular.module('starter.controllers', ['ngCordova'])
 		$scope.read = function(characteristsic) {
 			console.log(JSON.stringify(characteristsic));
 				ble.read($stateParams.deviceId, characteristsic.service, characteristsic.characteristic, function(data){
-					alert("data" + JSON.stringify(data));
+					var arrayBufferToInt = function (ab) {
+						var a = new Uint8Array(ab);
+						return a[0];
+					};
+
+					alert("data" + JSON.stringify(arrayBufferToInt(data)));
 					console.log(JSON.stringify(data));
 				}, function(err){
-					alert("err" + JSON.stringify(err));
+					alert("err" + JSON.stringify(arrayBufferToInt(err)));
 					console.log(JSON.stringify(err));
 			});
 		}

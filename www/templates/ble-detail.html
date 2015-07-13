@@ -17,7 +17,7 @@
         <div class="list card">
             <div class="item item-divider">All</div>
             <ion-list>
-                <ion-item ng-repeat="characteristic in characteristics" ng-click="read(characteristic)">
+                <ion-item ng-repeat="characteristic in characteristics" ng-click="read(characteristic)" ng-if="characteristic.descriptors[0] !== undefined">
                     {{characteristic.service}} {{characteristic.properties}}
                 </ion-item>
             </ion-list>
