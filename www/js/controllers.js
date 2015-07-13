@@ -87,7 +87,7 @@ angular.module('starter.controllers', ['ngCordova'])
 		BLE.scan().then(success, failure);
 	})
 
-	.controller('BLEDetailCtrl', function ($scope, $stateParams, BLE,  $cordovaToast) {
+	.controller('BLEDetailCtrl', function ($scope, $stateParams, BLE,  $cordovaToast, Characteristics) {
 		var arrayBufferToInt = function (ab) {
 			var a = new Uint8Array(ab);
 			return a[0];

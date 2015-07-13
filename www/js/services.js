@@ -58,7 +58,7 @@ angular.module('starter.services', [])
 			}
 		};
 	})
-	.factory('characteristics', function () {
+	.factory('Characteristics', function () {
 		return {
 			"2a00": {
 				"name": "Device Name"
