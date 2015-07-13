@@ -88,10 +88,23 @@ angular.module('starter.controllers', ['ngCordova'])
 	})
 
 	.controller('BLEDetailCtrl', function ($scope, $stateParams, BLE,  $cordovaToast, Characteristics) {
-		var arrayBufferToInt = function (ab) {
-			var a = new Uint8Array(ab);
+		var bytesToString = function(buffer) {
+			return String.fromCharCode.apply(null, new Uint8Array(buffer));
+		}
+
+		var arrayBufferToInt = function (buffer) {
+			var a = new Uint8Array(buffer);
 			return a[0];
 		};
+
+		function convert(buffer) {
+			var int = arrayBufferToInt(buffer);
+			if(parseInt(int) !== 0) {
+				return int;
+			} else {
+				return bytesToString(buffer);
+			}
+		}
 
 		BLE.connect($stateParams.deviceId).then(
 			function (peripheral) {
@@ -115,17 +128,16 @@ angular.module('starter.controllers', ['ngCordova'])
 					characteristics.push(characteristic);
 				});
 				$scope.characteristics = characteristics;
-				//$scope.SpecificationName = Characteristics.get(assignedNumber).name;
 			}
 		);
 		$scope.read = function(characteristsic) {
 			console.log(JSON.stringify(characteristsic));
 				ble.read($stateParams.deviceId, characteristsic.service, characteristsic.characteristic, function(data){
-					alert(JSON.stringify(arrayBufferToInt(data)));
-					console.log(JSON.stringify(arrayBufferToInt(data)));
+					alert(JSON.stringify(convert(data)));
+					console.log(JSON.stringify(convert(data)));
 				}, function(err){
-					alert(JSON.stringify(arrayBufferToInt(err)));
-					console.log(JSON.stringify(arrayBufferToInt(err)));
+					alert(JSON.stringify(convert(err)));
+					console.log(JSON.stringify(convert(err)));
 			});
 		}
 	});
