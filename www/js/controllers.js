@@ -104,7 +104,18 @@ angular.module('starter.controllers', ['ngCordova'])
 				console.log(JSON.stringify(peripheral));
 				$scope.device = peripheral;
 				$scope.services = peripheral.services;
-				$scope.characteristics = peripheral.characteristics;
+				var characteristics = [{}];
+				angular.forEach(peripheral.characteristics, function(characteristic, key){
+					var SpecificationName = Characteristics.get(characteristic.characteristic).name;
+					if(SpecificationName){
+						characteristic.SpecificationName = SpecificationName;
+					} else {
+						characteristic.SpecificationName = ""
+					}
+					characteristics.push(characteristic);
+				});
+				$scope.characteristics = characteristics;
+				//$scope.SpecificationName = Characteristics.get(assignedNumber).name;
 			}
 		);
 		$scope.read = function(characteristsic) {

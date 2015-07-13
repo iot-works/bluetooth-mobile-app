@@ -10,7 +10,7 @@
             <div class="item item-divider">All</div>
             <ion-list>
                 <ion-item ng-repeat="characteristic in characteristics" ng-click="read(characteristic)" ng-if="characteristic.descriptors[0] !== undefined">
-                    <h2>{{characteristic.characteristic}} </h2>
+                    <h2>{{characteristic.SpecificationName}} </h2>
                     <p>属性: <span ng-repeat="propertie in characteristic.properties">{{propertie}} </span></p>
                 </ion-item>
             </ion-list>

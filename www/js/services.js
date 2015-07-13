@@ -59,7 +59,146 @@ angular.module('starter.services', [])
 		};
 	})
 	.factory('Characteristics', function () {
-		return {
+		var services = {
+			"1800": {
+				"name": "Generic Access"
+				, "type": "org.bluetooth.service.generic_access"
+			}
+			, "1801": {
+				"name": "Generic Attribute"
+				, "type": "org.bluetooth.service.generic_attribute"
+			}
+			, "1802": {
+				"name": "Immediate Alert"
+				, "type": "org.bluetooth.service.immediate_alert"
+			}
+			, "1803": {
+				"name": "Link Loss"
+				, "type": "org.bluetooth.service.link_loss"
+			}
+			, "1804": {
+				"name": "Tx Power"
+				, "type": "org.bluetooth.service.tx_power"
+			}
+			, "1805": {
+				"name": "Current Time Service"
+				, "type": "org.bluetooth.service.current_time"
+			}
+			, "1806": {
+				"name": "Reference Time Update Service"
+				, "type": "org.bluetooth.service.reference_time_update"
+			}
+			, "1807": {
+				"name": "Next DST Change Service"
+				, "type": "org.bluetooth.service.next_dst_change"
+			}
+			, "1808": {
+				"name": "Glucose"
+				, "type": "org.bluetooth.service.glucose"
+			}
+			, "1809": {
+				"name": "Health Thermometer"
+				, "type": "org.bluetooth.service.health_thermometer"
+			}
+			, "180a": {
+				"name": "Device Information"
+				, "type": "org.bluetooth.service.device_information"
+			}
+			, "180d": {
+				"name": "Heart Rate"
+				, "type": "org.bluetooth.service.heart_rate"
+			}
+			, "180e": {
+				"name": "Phone Alert Status Service"
+				, "type": "org.bluetooth.service.phone_alert_service"
+			}
+			, "180f": {
+				"name": "Battery Service"
+				, "type": "org.bluetooth.service.battery_service"
+			}
+			, "1810": {
+				"name": "Blood Pressure"
+				, "type": "org.bluetooth.service.blood_pressuer"
+			}
+			, "1811": {
+				"name": "Alert Notification Service"
+				, "type": "org.bluetooth.service.alert_notification"
+			}
+			, "1812": {
+				"name": "Human Interface Device"
+				, "type": "org.bluetooth.service.human_interface_device"
+			}
+			, "1813": {
+				"name": "Scan Parameters"
+				, "type": "org.bluetooth.service.scan_parameters"
+			}
+			, "1814": {
+				"name": "Running Speed and Cadence"
+				, "type": "org.bluetooth.service.running_speed_and_cadence"
+			}
+			, "1815": {
+				"name": "Cycling Speed and Cadence"
+				, "type": "org.bluetooth.service.cycling_speed_and_cadence"
+			}
+		};
+		var descriptors = {
+			"2900": {
+				"name": "Characteristic Extended Properties"
+				, "type": "org.bluetooth.descriptor.gatt.characteristic_extended_properties"
+			}
+			, "2901": {
+				"name": "Characteristic User Description"
+				, "type": "org.bluetooth.descriptor.gatt.characteristic_user_description"
+			}
+			, "2902": {
+				"name": "Client Characteristic Configuration"
+				, "type": "org.bluetooth.descriptor.gatt.client_characteristic_configuration"
+			}
+			, "2903": {
+				"name": "Server Characteristic Configuration"
+				, "type": "org.bluetooth.descriptor.gatt.server_characteristic_configuration"
+			}
+			, "2904": {
+				"name": "Characteristic Presentation Format"
+				, "type": "org.bluetooth.descriptor.gatt.characteristic_presentation_format"
+			}
+			, "2905": {
+				"name": "Characteristic Aggregate Format"
+				, "type": "org.bluetooth.descriptor.gatt.characteristic_aggregate_format"
+			}
+			, "2906": {
+				"name": "Valid Range"
+				, "type": "org.bluetooth.descriptor.valid_range"
+			}
+			, "2907": {
+				"name": "External Report Reference"
+				, "type": "org.bluetooth.descriptor.external_report_reference"
+			}
+			, "2908": {
+				"name": "Report Reference"
+				, "type": "org.bluetooth.descriptor.report_reference"
+			}
+		};
+		var attributes =
+		{
+			"2800": {
+				"name": "Primary Service"
+				, "specification": "Bluetooth Core Specification Volume 3, Part G, Section 3.1"
+			}
+			, "2801": {
+			"name": "Secondary Service"
+			, "specification": "Bluetooth Core Specification Volume 3, Part G, Section 3.1"
+		}
+			, "2802": {
+			"name": "Include"
+			, "specification": "org.bluetooth.service.immediate_alert"
+		}
+			, "2803": {
+			"name": "Characteristic"
+			, "specification": "Bluetooth Core Specification Volume 3, Part G, Section 3.3"
+		}
+		};
+		var characteristics = {
 			"2a00": {
 				"name": "Device Name"
 				, "type": "org.bluetooth.characteristic.gap.device_name"
@@ -655,6 +794,19 @@ angular.module('starter.services', [])
 			, "2aac": {
 				"name": "CGM Specific Ops Control Point"
 				, "type": "org.bluetooth.characteristic.cgm_specific_ops_control_point"
+			}
+		};
+
+		return {
+			get: function (assignedNumber) {
+				var characteristic = {
+					name: "",
+					type: ""
+				};
+				if (characteristics[assignedNumber]) {
+					characteristic = characteristics[assignedNumber]
+				}
+				return characteristic;
 			}
 		}
 	});
