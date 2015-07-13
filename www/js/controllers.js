@@ -87,16 +87,23 @@ angular.module('starter.controllers', ['ngCordova'])
 		BLE.scan().then(success, failure);
 	})
 
-	.controller('BLEDetailCtrl', function ($scope, $stateParams, BLE) {
+	.controller('BLEDetailCtrl', function ($scope, $stateParams, BLE,  $cordovaToast) {
 		BLE.connect($stateParams.deviceId).then(
 			function (peripheral) {
+				$cordovaToast
+					.show('连接到' + peripheral.name, 'long', 'center')
+					.then(function(success) {
+					}, function (error) {
+					});
+
+				console.log(JSON.stringify(peripheral));
 				$scope.device = peripheral;
 				$scope.services = peripheral.services;
 				$scope.characteristics = peripheral.characteristics;
 			}
 		);
 		$scope.read = function(characteristsic) {
-			console.log(characteristsic);
+			console.log(JSON.stringify(characteristsic));
 				ble.read($stateParams.deviceId, characteristsic.service, characteristsic.characteristic, function(data){
 					alert("data" + JSON.stringify(data));
 					console.log(JSON.stringify(data));
