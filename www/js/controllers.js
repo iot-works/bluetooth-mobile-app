@@ -105,12 +105,12 @@ angular.module('starter.controllers', ['ngCordova'])
 				$scope.device = peripheral;
 				$scope.services = peripheral.services;
 				var characteristics = [{}];
-				angular.forEach(peripheral.characteristics, function(characteristic, key){
+				angular.forEach(peripheral.characteristics, function(characteristic){
 					var SpecificationName = Characteristics.get(characteristic.characteristic).name;
 					if(SpecificationName){
 						characteristic.SpecificationName = SpecificationName;
 					} else {
-						characteristic.SpecificationName = ""
+						characteristic.SpecificationName = characteristic.characteristic
 					}
 					characteristics.push(characteristic);
 				});
