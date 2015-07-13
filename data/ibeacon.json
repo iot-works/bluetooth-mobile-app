@@ -1,0 +1,193 @@
+{
+  "name": "FMXY-514",
+  "id": "EC:24:B8:25:E4:D3",
+  "advertising": {},
+  "rssi": -64,
+  "services": [
+    "1800",
+    "1801",
+    "191a",
+    "180f"
+  ],
+  "characteristics": [
+    {
+      "service": "1800",
+      "characteristic": "2a00",
+      "properties": ["Read"]
+    },
+    {
+      "service": "1800",
+      "characteristic": "2a01",
+      "properties": ["Read"]
+    },
+    {
+      "service": "1800",
+      "characteristic": "2a02",
+      "properties": [
+        "Read",
+        "Write"
+      ]
+    },
+    {
+      "service": "1800",
+      "characteristic": "2a03",
+      "properties": ["Write"]
+    },
+    {
+      "service": "1800",
+      "characteristic": "2a04",
+      "properties": ["Read"]
+    },
+    {
+      "service": "1801",
+      "characteristic": "2a05",
+      "properties": ["Indicate"],
+      "descriptors": [{"uuid": "2902"}]
+    },
+    {
+      "service": "191a",
+      "characteristic": "2b21",
+      "properties": [
+        "Read",
+        "Write"
+      ],
+      "descriptors": [{"uuid": "2901"}]
+    },
+    {
+      "service": "191a",
+      "characteristic": "2b22",
+      "properties": [
+        "Read",
+        "Write"
+      ],
+      "descriptors": [{"uuid": "2901"}]
+    },
+    {
+      "service": "191a",
+      "characteristic": "2b23",
+      "properties": [
+        "Read",
+        "Write"
+      ],
+      "descriptors": [{"uuid": "2901"}]
+    },
+    {
+      "service": "191a",
+      "characteristic": "2b24",
+      "properties": [
+        "Read",
+        "Write"
+      ],
+      "descriptors": [{"uuid": "2901"}]
+    },
+    {
+      "service": "191a",
+      "characteristic": "2b25",
+      "properties": [
+        "Read",
+        "Write"
+      ],
+      "descriptors": [{"uuid": "2901"}]
+    },
+    {
+      "service": "191a",
+      "characteristic": "2b26",
+      "properties": [
+        "Read",
+        "Write"
+      ],
+      "descriptors": [{"uuid": "2901"}]
+    },
+    {
+      "service": "191a",
+      "characteristic": "2b27",
+      "properties": [
+        "Read",
+        "Write"
+      ],
+      "descriptors": [{"uuid": "2901"}]
+    },
+    {
+      "service": "191a",
+      "characteristic": "2b28",
+      "properties": [
+        "Read",
+        "Write"
+      ],
+      "descriptors": [{"uuid": "2901"}]
+    },
+    {
+      "service": "191a",
+      "characteristic": "2b29",
+      "properties": ["Read"],
+      "descriptors": [{"uuid": "2901"}]
+    },
+    {
+      "service": "191a",
+      "characteristic": "2b2a",
+      "properties": [
+        "Read",
+        "Write"
+      ],
+      "descriptors": [{"uuid": "2901"}]
+    },
+    {
+      "service": "191a",
+      "characteristic": "2b2b",
+      "properties": [
+        "Read",
+        "Write"
+      ],
+      "descriptors": [{"uuid": "2901"}]
+    },
+    {
+      "service": "191a",
+      "characteristic": "2b2c",
+      "properties": [
+        "Read",
+        "Write"
+      ],
+      "descriptors": [{"uuid": "2901"}]
+    },
+    {
+      "service": "191a",
+      "characteristic": "2b2d",
+      "properties": [
+        "Read",
+        "Write"
+      ],
+      "descriptors": [{"uuid": "2901"}]
+    },
+    {
+      "service": "191a",
+      "characteristic": "2b2e",
+      "properties": [
+        "Read",
+        "Write"
+      ],
+      "descriptors": [{"uuid": "2901"}]
+    },
+    {
+      "service": "191a",
+      "characteristic": "2b2f",
+      "properties": [
+        "Read",
+        "Write"
+      ],
+      "descriptors": [{"uuid": "2901"}]
+    },
+    {
+      "service": "180f",
+      "characteristic": "2a19",
+      "properties": [
+        "Read",
+        "Notify"
+      ],
+      "descriptors": [
+        {"uuid": "2902"},
+        {"uuid": "c336dc80-0a39-48ab-9993-e0148581a98f"}
+      ]
+    }
+  ]
+}
+
