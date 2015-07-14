@@ -716,26 +716,41 @@ angular.module('ble.services', [])
 				"name": "CGM Measurement"
 				, "type": "org.bluetooth.characteristic.cgm_measurement"
 			}
-			, "2aa8": {
-				"name": "CGM Feature"
-				, "type": "org.bluetooth.characteristic.cgm_feature"
-			}
-			, "2aa9": {
-				"name": "CGM Status"
-				, "type": "org.bluetooth.characteristic.cgm_status"
-			}
-			, "2aaa": {
-				"name": "CGM Session Start Time"
-				, "type": "org.bluetooth.characteristic.cgm_session_start_time"
-			}
-			, "2aab": {
-				"name": "CGM Session Run Time"
-				, "type": "org.bluetooth.characteristic.cgm_session_run_time"
-			}
-			, "2aac": {
-				"name": "CGM Specific Ops Control Point"
-				, "type": "org.bluetooth.characteristic.cgm_specific_ops_control_point"
-			}
+			,
+			"2aa8": {
+				"name": "CGM Feature",
+				"type": "org.bluetooth.characteristic.cgm_feature"
+			},
+			"2aa9": {
+				"name": "CGM Status",
+				"type": "org.bluetooth.characteristic.cgm_status"
+			},
+			"2aaa": {
+				"name": "CGM Session Start Time",
+				"type": "org.bluetooth.characteristic.cgm_session_start_time"
+			},
+			"2aab": {
+				"name": "CGM Session Run Time",
+				"type": "org.bluetooth.characteristic.cgm_session_run_time"
+			},
+			"2aac": {
+				"name": "CGM Specific Ops Control Point",
+				"type": "org.bluetooth.characteristic.cgm_specific_ops_control_point"
+			},
+			"ff01": {"name": "Device Info"},
+			"ff02": {"name": "Device Name "},
+			"ff03": {"name": "Notification"},
+			"ff04": {"name": "User Info "},
+			"ff05": {"name": "Control Point"},
+			"ff06": {"name": "Realtime Steps"},
+			"ff07": {"name": "Activity Data"},
+			"ff08": {"name": "Firmware Data"},
+			"ff09": {"name": "LE Params"},
+			"ff0a": {"name": "Datetime"},
+			"ff0b": {"name": "Statistics"},
+			"ff0c": {"name": "Battery Info"},
+			"ff0d": {"name": "Test "},
+			"ff0e": {"name": "Sensor Data"}
 		};
 
 		return {
