@@ -98,11 +98,11 @@ angular.module('starter.controllers', ['ngCordova'])
 		};
 
 		function convert(buffer) {
-			var int = arrayBufferToInt(buffer);
-			if(parseInt(int) !== 0) {
-				return int;
+			var result = bytesToString(buffer);
+			if(result !== "" && result.length > 0 && arrayBufferToInt(buffer)) {
+				return result;
 			} else {
-				return bytesToString(buffer);
+				return arrayBufferToInt(buffer);
 			}
 		}
 
