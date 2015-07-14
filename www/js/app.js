@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ble.services'])
 
   .run(function($ionicPlatform, $cordovaBluetoothSerial) {
     $ionicPlatform.ready(function() {
