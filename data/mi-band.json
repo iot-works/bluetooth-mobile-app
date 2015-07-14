@@ -1,0 +1,226 @@
+{
+  "name": "MI",
+  "id": "88:0F:10:4E:97:1E",
+  "advertising": {},
+  "rssi": -82,
+  "services": [
+    "1800",
+    "1801",
+    "fee0",
+    "fee1",
+    "fee7",
+    "1802"
+  ],
+  "characteristics": [
+    {
+      "service": "1800",
+      "characteristic": "2a00",
+      "properties": ["Read"]
+    },
+    {
+      "service": "1800",
+      "characteristic": "2a01",
+      "properties": ["Read"]
+    },
+    {
+      "service": "1800",
+      "characteristic": "2a02",
+      "properties": [
+        "Read",
+        "Write"
+      ]
+    },
+    {
+      "service": "1800",
+      "characteristic": "2a04",
+      "properties": ["Read"]
+    },
+    {
+      "service": "1801",
+      "characteristic": "2a05",
+      "properties": [
+        "Read",
+        "Indicate"
+      ],
+      "descriptors": [{"uuid": "2902"}]
+    },
+    {
+      "service": "fee0",
+      "characteristic": "ff01",
+      "properties": ["Read"]
+    },
+    {
+      "service": "fee0",
+      "characteristic": "ff02",
+      "properties": [
+        "Read",
+        "Write"
+      ]
+    },
+    {
+      "service": "fee0",
+      "characteristic": "ff03",
+      "properties": [
+        "Read",
+        "Notify"
+      ],
+      "descriptors": [{"uuid": "2902"}]
+    },
+    {
+      "service": "fee0",
+      "characteristic": "ff04",
+      "properties": [
+        "Read",
+        "Write"
+      ]
+    },
+    {
+      "service": "fee0",
+      "characteristic": "ff05",
+      "properties": ["Write"]
+    },
+    {
+      "service": "fee0",
+      "characteristic": "ff06",
+      "properties": [
+        "Read",
+        "Notify"
+      ],
+      "descriptors": [{"uuid": "2902"}]
+    },
+    {
+      "service": "fee0",
+      "characteristic": "ff07",
+      "properties": [
+        "Read",
+        "Notify"
+      ],
+      "descriptors": [{"uuid": "2902"}]
+    },
+    {
+      "service": "fee0",
+      "characteristic": "ff08",
+      "properties": ["WriteWithoutResponse"]
+    },
+    {
+      "service": "fee0",
+      "characteristic": "ff09",
+      "properties": [
+        "Read",
+        "Write",
+        "Notify"
+      ],
+      "descriptors": [{"uuid": "2902"}]
+    },
+    {
+      "service": "fee0",
+      "characteristic": "ff0a",
+      "properties": [
+        "Read",
+        "Write"
+      ]
+    },
+    {
+      "service": "fee0",
+      "characteristic": "ff0b",
+      "properties": [
+        "Read",
+        "Write"
+      ]
+    },
+    {
+      "service": "fee0",
+      "characteristic": "ff0c",
+      "properties": [
+        "Read",
+        "Notify"
+      ],
+      "descriptors": [{"uuid": "2902"}]
+    },
+    {
+      "service": "fee0",
+      "characteristic": "ff0d",
+      "properties": [
+        "Read",
+        "Write"
+      ]
+    },
+    {
+      "service": "fee0",
+      "characteristic": "ff0e",
+      "properties": [
+        "Read",
+        "Write",
+        "Notify"
+      ],
+      "descriptors": [{"uuid": "2902"}]
+    },
+    {
+      "service": "fee0",
+      "characteristic": "ff0f",
+      "properties": [
+        "Read",
+        "Write"
+      ]
+    },
+    {
+      "service": "fee1",
+      "characteristic": "fedd",
+      "properties": ["Write"]
+    },
+    {
+      "service": "fee1",
+      "characteristic": "fede",
+      "properties": ["Read"]
+    },
+    {
+      "service": "fee1",
+      "characteristic": "fedf",
+      "properties": ["Read"]
+    },
+    {
+      "service": "fee1",
+      "characteristic": "fed0",
+      "properties": ["Write"]
+    },
+    {
+      "service": "fee1",
+      "characteristic": "fed1",
+      "properties": ["Write"]
+    },
+    {
+      "service": "fee1",
+      "characteristic": "fed2",
+      "properties": ["Read"]
+    },
+    {
+      "service": "fee1",
+      "characteristic": "fed3",
+      "properties": ["Write"]
+    },
+    {
+      "service": "fee7",
+      "characteristic": "fec7",
+      "properties": ["Write"]
+    },
+    {
+      "service": "fee7",
+      "characteristic": "fec8",
+      "properties": [
+        "Read",
+        "Indicate"
+      ],
+      "descriptors": [{"uuid": "2902"}]
+    },
+    {
+      "service": "fee7",
+      "characteristic": "fec9",
+      "properties": ["Read"]
+    },
+    {
+      "service": "1802",
+      "characteristic": "2a06",
+      "properties": ["WriteWithoutResponse"]
+    }
+  ]
+}
