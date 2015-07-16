@@ -4,12 +4,7 @@ angular.module('starter.controllers', ['ngCordova'])
 	})
 
 	.controller('ColorCtrl', function ($scope, $cordovaBluetoothSerial) {
-		var $box = $('#colorPicker');
-		$box.tinycolorpicker();
-		var box = $box.data("plugin_tinycolorpicker");
-
-		box.setColor("#ff0000");
-		$scope.rgbValue = box.colorRGB;
+		$scope.rgbValue = "";
 
 		$('#colorpickerHolder').ColorPicker({
 			flat: true,
@@ -18,28 +13,6 @@ angular.module('starter.controllers', ['ngCordova'])
 					$scope.rgbValue = rgb;
 				});
 			}
-		});
-
-		//$("#spectrum").spectrum({
-		//	preferredFormat: "rgb",
-		//	color: "#ff0000",
-		//	flat: true,
-		//	showInput: true,
-		//	allowEmpty:true,
-		//	change: function(color) {
-		//		if(color){
-		//			$scope.$apply(function(){
-		//				$scope.rgbValue = color.toRgbString();
-		//			});
-		//		}
-		//	}
-		//
-		//});
-		//
-		$box.bind("change", function () {
-			$scope.$apply(function () {
-				$scope.rgbValue = box.colorRGB;
-			});
 		});
 
 		$scope.send = function () {
