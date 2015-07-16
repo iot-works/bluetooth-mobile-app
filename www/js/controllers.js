@@ -54,7 +54,6 @@ angular.module('starter.controllers', ['ngCordova'])
 		};
 
 		$scope.connect = function (address, device) {
-			console.log("click connect" + address);
 			$cordovaBluetoothSerial.connect(address).then(function (result) {
 				localStorage.setItem("last_device",  device);
 				$state.go('tab.color');
