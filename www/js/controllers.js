@@ -9,13 +9,16 @@ angular.module('starter.controllers', ['ngCordova'])
 		var box = $box.data("plugin_tinycolorpicker");
 
 		box.setColor("#ff0000");
+		$scope.rgbValue = box.colorRGB;
 
 		$box.bind("change", function()
 		{
 			var rgb = box.colorRGB;
-			console.log(rgb);
+			$scope.$apply(function(){
+				$scope.rgbValue = box.colorRGB;
+			});
 			$cordovaBluetoothSerial.write(rgb).then(function (result) {
-				console.log('write' + rgb + result);
+				console.log('write:' + rgb + result);
 			});
 		});
 	})
