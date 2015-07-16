@@ -1,6 +1,7 @@
 angular.module('starter.controllers', ['ngCordova'])
 
 	.controller('DashCtrl', function ($scope) {
+		$scope.last = localStorage.getItem("last_device");
 	})
 
 	.controller('ColorCtrl', function ($scope, $cordovaBluetoothSerial) {
@@ -52,9 +53,10 @@ angular.module('starter.controllers', ['ngCordova'])
 			});
 		};
 
-		$scope.connect = function (address) {
+		$scope.connect = function (address, device) {
 			console.log("click connect" + address);
 			$cordovaBluetoothSerial.connect(address).then(function (result) {
+				localStorage.setItem("last_device",  device);
 				$state.go('tab.color');
 			});
 			$cordovaBluetoothSerial.subscribeRawData().then(function (result) {
