@@ -11,30 +11,38 @@ angular.module('starter.controllers', ['ngCordova'])
 		box.setColor("#ff0000");
 		$scope.rgbValue = box.colorRGB;
 
-		$("#spectrum").spectrum({
-			preferredFormat: "rgb",
-			color: "#ff0000",
+		$('#colorpickerHolder').ColorPicker({
 			flat: true,
-			showInput: true,
-			allowEmpty:true,
-			change: function(color) {
-				if(color){
-					$scope.$apply(function(){
-						$scope.rgbValue = color.toRgbString();
-					});
-				}
+			onChange: function (hsb, hex, rgb) {
+				$scope.$apply(function () {
+					$scope.rgbValue = rgb;
+				});
 			}
-
 		});
 
-		$box.bind("change", function()
-		{
-			$scope.$apply(function(){
+		//$("#spectrum").spectrum({
+		//	preferredFormat: "rgb",
+		//	color: "#ff0000",
+		//	flat: true,
+		//	showInput: true,
+		//	allowEmpty:true,
+		//	change: function(color) {
+		//		if(color){
+		//			$scope.$apply(function(){
+		//				$scope.rgbValue = color.toRgbString();
+		//			});
+		//		}
+		//	}
+		//
+		//});
+		//
+		$box.bind("change", function () {
+			$scope.$apply(function () {
 				$scope.rgbValue = box.colorRGB;
 			});
 		});
 
-		$scope.send = function(){
+		$scope.send = function () {
 			$cordovaBluetoothSerial.write($scope.rgbValue).then(function (result) {
 				console.log('write:' + $scope.rgbValue + ":" + result);
 			});
@@ -76,7 +84,7 @@ angular.module('starter.controllers', ['ngCordova'])
 			$cordovaBluetoothSerial.connect(address).then(function (result) {
 				$state.go('tab.color');
 			});
-			$cordovaBluetoothSerial.subscribeRawData().then(function(result){
+			$cordovaBluetoothSerial.subscribeRawData().then(function (result) {
 				console.log("raw data" + result);
 			})
 		};
@@ -108,8 +116,8 @@ angular.module('starter.controllers', ['ngCordova'])
 		BLE.scan().then(success, failure);
 	})
 
-	.controller('BLEDetailCtrl', function ($scope, $stateParams, BLE,  $cordovaToast, Characteristics) {
-		var bytesToString = function(buffer) {
+	.controller('BLEDetailCtrl', function ($scope, $stateParams, BLE, $cordovaToast, Characteristics) {
+		var bytesToString = function (buffer) {
 			return String.fromCharCode.apply(null, new Uint8Array(buffer));
 		};
 
@@ -120,7 +128,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
 		function convert(buffer) {
 			var result = bytesToString(buffer);
-			if(result !== "" && result.length > 0 && arrayBufferToInt(buffer)) {
+			if (result !== "" && result.length > 0 && arrayBufferToInt(buffer)) {
 				return result;
 			} else {
 				return arrayBufferToInt(buffer);
@@ -131,7 +139,7 @@ angular.module('starter.controllers', ['ngCordova'])
 			function (peripheral) {
 				$cordovaToast
 					.show('连接到' + peripheral.name, 'long', 'center')
-					.then(function(success) {
+					.then(function (success) {
 					}, function (error) {
 					});
 
@@ -139,9 +147,9 @@ angular.module('starter.controllers', ['ngCordova'])
 				$scope.device = peripheral;
 				$scope.services = peripheral.services;
 				var characteristics = [{}];
-				angular.forEach(peripheral.characteristics, function(characteristic){
+				angular.forEach(peripheral.characteristics, function (characteristic) {
 					var SpecificationName = Characteristics.get(characteristic.characteristic).name;
-					if(SpecificationName){
+					if (SpecificationName) {
 						characteristic.SpecificationName = SpecificationName;
 					} else {
 						characteristic.SpecificationName = characteristic.characteristic
@@ -151,11 +159,11 @@ angular.module('starter.controllers', ['ngCordova'])
 				$scope.characteristics = characteristics;
 			}
 		);
-		$scope.read = function(characteristsic) {
-				ble.read($stateParams.deviceId, characteristsic.service, characteristsic.characteristic, function(data){
-					alert(JSON.stringify(convert(data)));
-				}, function(err){
-					alert(JSON.stringify(convert(err)));
+		$scope.read = function (characteristsic) {
+			ble.read($stateParams.deviceId, characteristsic.service, characteristsic.characteristic, function (data) {
+				alert(JSON.stringify(convert(data)));
+			}, function (err) {
+				alert(JSON.stringify(convert(err)));
 			});
 		}
 	});
