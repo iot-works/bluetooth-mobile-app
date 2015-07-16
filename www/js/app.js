@@ -67,7 +67,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       .state('tab.color', {
         url: '/color',
         views: {
-          'tab-ble': {
+          'tab-bluetooth': {
             templateUrl: 'templates/tab-color.html',
             controller: 'ColorCtrl'
           }
