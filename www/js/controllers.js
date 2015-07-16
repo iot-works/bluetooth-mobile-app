@@ -13,14 +13,16 @@ angular.module('starter.controllers', ['ngCordova'])
 
 		$box.bind("change", function()
 		{
-			var rgb = box.colorRGB;
 			$scope.$apply(function(){
 				$scope.rgbValue = box.colorRGB;
 			});
-			$cordovaBluetoothSerial.write(rgb).then(function (result) {
-				console.log('write:' + rgb + result);
-			});
 		});
+
+		$scope.send = function(){
+			$cordovaBluetoothSerial.write($scope.rgbValue).then(function (result) {
+				console.log('write:' + $scope.rgbValue + ":" + result);
+			});
+		}
 	})
 
 	.controller('BlueToothCtrl', function ($scope, $ionicPlatform, $cordovaBluetoothSerial, $state) {
