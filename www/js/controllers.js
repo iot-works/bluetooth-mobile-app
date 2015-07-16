@@ -10,7 +10,7 @@ angular.module('starter.controllers', ['ngCordova'])
 			flat: true,
 			onChange: function (hsb, hex, rgb) {
 				$scope.$apply(function () {
-					$scope.rgbValue = rgb;
+					$scope.rgbValue = rgb.r  + "," + rgb.g + "," + rgb.b;
 				});
 			}
 		});
