@@ -61,7 +61,19 @@
     z-index: 1000;
 }
 
+#colorPicker {
+    top: 12px;
+}
+
 #colorPicker .dropdown li{
     height: 25px;
     cursor: pointer;
+}
+
+#colorPicker canvas {
+    margin:-11px -12px;
+}
+
+#colorPicker .color {
+    margin: -12px -12px;
 }
