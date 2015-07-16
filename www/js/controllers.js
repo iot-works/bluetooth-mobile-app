@@ -9,6 +9,14 @@ angular.module('starter.controllers', ['ngCordova'])
 		var box = $box.data("plugin_tinycolorpicker");
 
 		box.setColor("#ff0000");
+		$("#spectrum").spectrum({
+			preferredFormat: "rgb",
+			color: "#ff0000",
+			flat: true,
+			showInput: true,
+			allowEmpty:true
+		});
+
 		$scope.rgbValue = box.colorRGB;
 
 		$box.bind("change", function()
