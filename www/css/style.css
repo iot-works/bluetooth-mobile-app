@@ -193,28 +193,6 @@ q:before,q:after {
 }
 abbr,acronym { border:0;
 }
-html, body {
-    background-color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    line-height: 18px;
-    color: #52697E;
-}
-body {
-    text-align: center;
-    overflow: auto;
-}
-.wrapper {
-    width: 700px;
-    margin: 0 auto;
-    text-align: left;
-}
-h1 {
-    font-size: 21px;
-    height: 47px;
-    line-height: 47px;
-    text-transform: uppercase;
-}
 .navigationTabs {
     height: 23px;
     line-height: 23px;
