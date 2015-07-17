@@ -23,6 +23,7 @@
     "com.megster.cordova.ble"
   ],
   "cordovaPlatforms": [
-    "ios"
+    "ios",
+    "android"
   ]
 }
